@@ -28,6 +28,7 @@ var arethusaModules = [
   'arethusa.comments',
   'arethusa.hebrew_morph',
   'arethusa.context_menu',
+  'arethusa.reference',
   //'arethusa.conf_editor',
   'arethusa.review',
   'arethusa.search',

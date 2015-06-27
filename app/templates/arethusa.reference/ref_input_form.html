@@ -1,0 +1,16 @@
+<form ng-if="active">
+  <!-- ngIf opens a new scope - we therefore need a -->
+  <!-- parent reference in our model -->
+  <span class="italic">{{ currentTokenStrings }}</span>
+  <textarea
+    focus-me="active"
+    rows="3"
+    placeholder="{{ markdownPlaceholder}}"
+    ng-model="$parent.ref"/>
+  <span
+    ng-click="submit()"
+    class="button micro radius"
+    translate="submit">
+  </span>
+  <hr class="small"/>
+</form>

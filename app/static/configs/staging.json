@@ -4,7 +4,8 @@
     "showKeys" : true,
     "@include" : "layouts/perseids.json",
     "chunkParam" : "chunk",
-    "auxConfPath": "http://services.perseids.org/arethusa-configs", 
+    "auxConfPath": "http://services.perseids.org/arethusa-configs",
+    //"/data/aux_configs/dist",
     "retrievers" : {
       "TreebankRetriever" : {
         "resource" : "arethusaServerTreebank",
@@ -27,7 +28,8 @@
       "depTree",
       "review",
       "history",
-      "comments"
+      "comments",
+      "reference"
     ]
   },
 
@@ -84,6 +86,7 @@
         }
       },
       "gloss" : true,
+//      "matchAll" : true,
       "@include" : "morph/lat_attributes.json"
     },
 
@@ -134,6 +137,14 @@
     }
   },
 
+"reference" : {
+        "retriever" : {
+            "ReferenceRetriever" : {
+               "resource" : "arethusaServerReference"
+            }
+        }
+    },
+
   "exitHandler" : {
     "title" : "LLT",
     "route" : "http://latin-languge-toolkit.net"
@@ -143,4 +154,5 @@
     "@include" : "keyboard/key_map.json"
   }
 }
+
 
