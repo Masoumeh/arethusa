@@ -686,7 +686,7 @@ div.citbibl {
 }
 
 .postag-selector {
-  -moz-transform: scale(1.6); /* FF */
+  -moz-transform: scale(1.6,1.6); /* FF */
   $size: 1.3rem;
   width: $size;
   height: $size;
@@ -824,8 +824,11 @@ li.keyboard-key {
   @include transition(background-color 0.2s ease-out);
 }
 
+
 li.keyboard-key:hover {
   background-color: aliceblue;
+  font-size: 1.2em;
+  font-weight: bold;
 }
 
 #keyboard {

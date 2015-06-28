@@ -122,6 +122,14 @@
       "contextMenu" : true,
       "contextMenuTemplate": "templates/arethusa.sg/context_menu.html",
       "@include" : "sg2/sg_labels.json"
+    },
+
+    "comments" : {
+        "retriever" : {
+            "CommentsRetriever" : {
+                "resource" : "arethusaServerComments"
+            }
+        }
     }
   },
 

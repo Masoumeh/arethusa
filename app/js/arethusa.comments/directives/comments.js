@@ -10,7 +10,7 @@ angular.module('arethusa.comments').directive('commentsX', [
     return {
       restrict: 'A',
       scope: {
-        comments: "=commentsX",
+        comments: "=commentsX"
       },
       compile: function(tElement, tAttrs, transclude) {
         return {

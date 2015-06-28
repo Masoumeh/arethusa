@@ -103,6 +103,10 @@
 
     "comment" : {
       "template" : "templates/comment2.html"
+    },
+
+    "reference" : {
+        "template" : "templates/comment2.html"
     }
   },
 

@@ -11,6 +11,11 @@
     "params" : [ "doc" ]
   },
 
+  "arethusaServerReference" : {
+        "route" : "/examples/reference/:doc",
+        "params" : [ "doc" ]
+  },
+
   "arethusaServerTreebank" : {
     "route" : "/examples/treebanks/:doc",
     "params" : [ "doc" ]

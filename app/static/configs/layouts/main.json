@@ -81,6 +81,12 @@
           "plugin" : "comments",
           "size" : [13, 13],
           "position" : [16, 36]
+        },
+
+        {
+            "plugin" : "reference",
+            "size" : [13, 13],
+            "position" : [26, 36]
         }
       ]
     }

@@ -17,7 +17,8 @@
       "morph",
       "relation",
       "artificialToken",
-      "depTree"
+      "depTree",
+      "reference"
     ],
     "globalDefaults" : {
       "mode" : "viewer"
@@ -79,6 +80,14 @@
         }
       },
       "@include" : "morph/lat_attributes.json"
+    },
+
+   "reference" : {
+        "retriever" : {
+            "ReferenceRetriever" : {
+               "resource" : "arethusaServerReference"
+            }
+        }
     },
 
     "relation" : {

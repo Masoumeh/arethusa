@@ -90,7 +90,7 @@ angular.module('arethusa.reference').service('reference', [
 
     this.init = function() {
       configure();
-      //getRefs();
+      getRefs();
     };
   }
 ]);

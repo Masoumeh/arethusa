@@ -21,6 +21,9 @@ angular.module('arethusa.core').directive('foreignKeysHelp', [
         function generateKeys() {
           var lang = (languageSettings.getFor('treebank') || languageSettings.getFor('hebrewMorph') || {}).lang;
           scope.keys = keyCapture.mappedKeyboard(lang, scope.shifted);
+          scope.config = {}; // use defaults
+          scope.model = {}; // always pass empty object
+
         }
 
         function bindShift() {
@@ -91,6 +94,7 @@ angular.module('arethusa.core').directive('foreignKeysHelp', [
         };
 
         generateKeys();
+
       },
       templateUrl: './templates/arethusa.core/foreign_keys_help.html'
     };

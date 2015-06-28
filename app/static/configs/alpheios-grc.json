@@ -14,7 +14,8 @@
       "search",
       "morph",
       "relation",
-      "depTree"
+      "depTree",
+      "reference"
     ],
     "globalDefaults" : {
       "mode" : "viewer"
