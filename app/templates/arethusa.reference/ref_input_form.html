@@ -13,4 +13,27 @@
     translate="submit">
   </span>
   <hr class="small"/>
+  <div class="fade-in"
+       ng-repeat='(token, ref) in tokenMapRef'>
+       <div class="comment">
+       <div class="comment-header">
+         <div class="comment-body">
+             <!--<span reference-targets="token"/>-->
+           <span translate="comments.on"/>
+           <span
+                   class="normal-size"
+                   colorize="true"
+                   click="true"
+                   hover="true">
+                    {{token}}
+           </span>
+           <hr>
+           <span ng-repeat="comment in splitRefs(token) track by $index">
+             {{comment}}
+           </span>
+         </div>
+       </div>
+       </div>
+</div>
+
 </form>
