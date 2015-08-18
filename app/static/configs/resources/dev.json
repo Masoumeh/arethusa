@@ -31,6 +31,10 @@
     "params" : [ "doc" ]
   },
 
+  "arethusaServerOa" : {
+    "route" : "http://74.70.97.104:8087/examples/oa/oa1"
+  },
+
   "phaidraTreebanks" : {
     "route" : "/examples/phaidra/:doc",
     "params" : [ "doc" ]
