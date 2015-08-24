@@ -505,6 +505,32 @@ angular.module('arethusa.core').service('state', [
       self.selectToken(newId, 'click');
     }
 
+    this.neighbourTokens = function(direction) {
+      // take the first current selection
+      var firstId = self.firstSelected();
+      var allIds = Object.keys(self.tokens);
+      var index = allIds.indexOf(firstId);
+      // select newId - make a roundtrip if we reached the bounds of the array
+      var newId;
+      switch (direction) {
+        case 'next':
+          newId = allIds[index + 1] || allIds[0];
+          break;
+        case 'prev':
+          newId = allIds[index - 1] || allIds[allIds.length - 1];
+          break;
+      }
+      return newId;
+    }
+
+    this.nextToken = function() {
+      return self.tokens[this.neighbourTokens('next')];
+    }
+
+    this.prevToken = function() {
+      return self.tokens[this.neighbourTokens('prev')];
+    }
+
     this.selectNextToken = function () {
       selectSurroundingToken('next');
     };

@@ -33,10 +33,21 @@ angular.module('arethusa.reference').service('reference', [
       this.link = link;
     };
 
+
+
     this.createNewRef = function(ids, cToken,ref) {
+      //Object.prototype.getName = function () {
+      //  var funcNameRegex = /function (.{1,})\(/;
+      //  var results = (funcNameRegex).exec((this).constructor.toString());
+      //  return (results && results.length > 1) ? results[1] : "";
+      //};
       var newRef = new Ref(id, ids, cToken, ref);
-      id++;
-      refArr.push(newRef);
+      //id++;
+      var oa = {};
+
+      //body["places"].push(oa);
+
+    refArr.push(body);
         if (cToken in tokenMapRef) {
             tokenMapRef[cToken] = tokenMapRef[cToken] + "|" + ref;
       }

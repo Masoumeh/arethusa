@@ -527,6 +527,8 @@ angular.module('arethusa.core').service('configurator', [
       return retrs[Object.keys(retrs)[0]];
     };
 
+    this.getPersister  = this.getRetriever;
+ 
     /**
      * @ngdoc function
      * @name arethusa.core.configurator#provideResource
