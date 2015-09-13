@@ -110,12 +110,9 @@ angular.module('arethusa.comments').factory('CommentsRetriever', [
       var resource = configurator.provideResource(conf.resource);
 
       this.getData = function(chunkId, callback) {
-          alert("getData");
         if (alreadyLoaded) {
-            alert("already loaded!");
           callback(comments[chunkId]);
         } else {
-            alert("ot loaded!");
           resource.get().then(function(res) {
             parseComments(res.data);
             callback(comments[chunkId]);

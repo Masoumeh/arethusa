@@ -29,7 +29,8 @@
       "review",
       "history",
       "comments",
-      "reference"
+      "reference",
+      "oa"
     ]
   },
 
@@ -53,6 +54,19 @@
   },
 
   "plugins" : {
+    "oa" : {
+      "retriever" : {
+        "OaRetriever" : {
+          "resource" : "arethusaServerOa"
+        }
+      },
+      "persister" : {
+        "oaPersister" : {
+          "resource" : "arethusaServerOa"
+        }
+      }
+    },
+
     "text" : {
       "main" : true,
       "template"  : "templates/text_with_context.html"

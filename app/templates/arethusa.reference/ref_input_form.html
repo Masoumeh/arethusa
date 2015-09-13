@@ -2,6 +2,15 @@
   <!-- ngIf opens a new scope - we therefore need a -->
   <!-- parent reference in our model -->
   <span class="italic">{{ currentTokenStrings }}</span>
+    <div ng-repeat='ref in tokenRefs'>
+        <div>
+            <input type="radio" name="refers"/>
+            <a href={{ref.placeLink}}>{{ref.name}}</a> "-" {{ref.id}}</div>
+        <div>{{ref.dsp}}</div>
+        <div>{{ref.country}}</div>
+        <button
+        <br/><br/><br/>
+    </div>
   <textarea
     focus-me="active"
     rows="3"
