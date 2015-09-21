@@ -4,44 +4,56 @@
   <span class="italic">{{ currentTokenStrings }}</span>
     <div ng-repeat='ref in tokenRefs'>
         <div>
-            <input type="radio" name="refers"/>
+            <input
+            type="radio"
+            class="postag-selector"
+            ng-model="$parent.ref.id"
+            ng-value="ref.id"
+            <!--ng-checked="ref.selected">-->
+            </input>
+            <!--<input type="radio" name="refers"/>-->
             <a href={{ref.placeLink}}>{{ref.name}}</a> "-" {{ref.id}}</div>
         <div>{{ref.dsp}}</div>
         <div>{{ref.country}}</div>
         <br/><br/><br/>
     </div>
-  <textarea
-    focus-me="active"
-    rows="3"
-    placeholder="{{ markdownPlaceholder}}"
-    ng-model="$parent.ref"/>
-  <span
-    ng-click="submit()"
-    class="button micro radius"
-    translate="submit">
+    <span
+      ng-click="submit()"
+      class="button micro radius"
+      translate="submit selected">
   </span>
-  <hr class="small"/>
-  <div class="fade-in"
-       ng-repeat='(token, ref) in tokenMapRef'>
-       <div class="comment">
-       <div class="comment-header">
-         <div class="comment-body">
-             <!--<span reference-targets="token"/>-->
-           <span translate="comments.on"/>
-           <span
-                   class="normal-size"
-                   colorize="true"
-                   click="true"
-                   hover="true">
-                    {{token}}
-           </span>
-           <hr>
-           <span ng-repeat="comment in splitRefs(token) track by $index">
-             {{comment}}
-           </span>
-         </div>
-       </div>
-       </div>
-</div>
+  <!--<textarea-->
+    <!--focus-me="active"-->
+    <!--rows="3"-->
+    <!--placeholder="{{ markdownPlaceholder}}"-->
+    <!--ng-model="$parent.ref"/>-->
+  <!--<span-->
+    <!--ng-click="submit()"-->
+    <!--class="button micro radius"-->
+    <!--translate="submit">-->
+  <!--</span>-->
+  <!--<hr class="small"/>-->
+  <!--<div class="fade-in"-->
+       <!--ng-repeat='(token, ref) in tokenMapRef'>-->
+       <!--<div class="comment">-->
+       <!--<div class="comment-header">-->
+         <!--<div class="comment-body">-->
+             <!--&lt;!&ndash;<span reference-targets="token"/>&ndash;&gt;-->
+           <!--<span translate="comments.on"/>-->
+           <!--<span-->
+                   <!--class="normal-size"-->
+                   <!--colorize="true"-->
+                   <!--click="true"-->
+                   <!--hover="true">-->
+                    <!--{{token}}-->
+           <!--</span>-->
+           <!--<hr>-->
+           <!--<span ng-repeat="comment in splitRefs(token) track by $index">-->
+             <!--{{comment}}-->
+           <!--</span>-->
+         <!--</div>-->
+       <!--</div>-->
+       <!--</div>-->
+<!--</div>-->
 
 </form>

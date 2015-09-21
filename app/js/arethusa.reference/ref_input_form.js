@@ -10,10 +10,17 @@ angular.module('arethusa.reference').directive('refInputForm', [
       link: function(scope, element, attrs) {
         scope.refArr = [];
         scope.tokenMapRef = new Object();
+        scope.selectedRefMap = new Object();
         scope.state = state;
+        scope.ref = {
+            id : 'none'
+        };
+
         scope.submit = function() {
            scope.refArr = reference.createNewRef(scope.ids,scope.currentTokenStrings,scope.ref)[0];
-          scope.tokenMapRef = reference.createNewRef(scope.ids,scope.currentTokenStrings,scope.ref)[1];
+           scope.tokenMapRef = reference.createNewRef(scope.ids,scope.currentTokenStrings,scope.ref)[1];
+           scope.selectedRefMap = reference.mapRefToToken(scope.ref.id, scope.currentTokenStrings);
+           console.log(JSON.stringify( scope.selectedRefMap, null, 4));
         };
         scope.splitRefs = function(token) {
           return reference.splitRefs(scope.tokenMapRef, token);
@@ -25,6 +32,43 @@ angular.module('arethusa.reference').directive('refInputForm', [
 
         function begins_with(input_string, comparison_string) {
           return input_string.toUpperCase().indexOf(comparison_string.toUpperCase()) === 0;
+        };
+
+        function nameMatches() {
+          return reference.getAllData().filter(function(entry) {
+              return begins_with(entry[0], currentTokens());
+          });
+        };
+
+        function uniqueIds () {
+            var name_matches = nameMatches();
+            var unique_ids = _.uniq(name_matches.map(function(match) {
+                return match[1];
+            }));
+            return unique_ids;
+        };
+
+        function results () {
+            var _i, _len, _results;
+            _results = [];
+            var unique_ids = uniqueIds();
+            for (_i = 0, _len = unique_ids.length; _i < _len; _i++) {
+                var unique_id = unique_ids[_i];
+                _results.push([
+                    (function () {
+                        var _j, _len1, _results1;
+                        _results1 = [];
+                        var name_matches = nameMatches();
+                        for (_j = 0, _len1 = name_matches.length; _j < _len1; _j++) {
+                            var name_match = name_matches[_j];
+                            if (name_match[1] === unique_id) {
+                                _results1.push(name_match[0]);
+                            }
+                        }
+                        return _results1;
+                    })(), unique_id
+                ]);
+            }
         };
 
         scope.$watchCollection('state.clickedTokens', function(newVal, oldVal) {
@@ -59,9 +103,9 @@ angular.module('arethusa.reference').directive('refInputForm', [
                   })(), unique_id
               ]);
           }
-
+          //var _results = results();
             scope.tokenRefs = new Array(_results.length);
-            for(var ii = 0;ii <  _results.length;ii ++) {
+            for(var ii = 0; ii <  _results.length; ii ++) {
                 var res = _results[ii];
                 scope.tokenRefs[ii] = {};
                 scope.tokenRefs[ii].id = res[1];
@@ -97,12 +141,17 @@ angular.module('arethusa.reference').directive('refInputForm', [
                                         modern_country += " > " + data.adminName1;
                                     }
                                     scope.tokenRefs[ii].country = modern_country;
+                                    //state.
                                 }
                             }
                         });
                     }
                 });
                 scope.tokenRefs[ii].dsp = dsp;
+            }
+
+            function saveSelectedRef(){
+
             }
         });
 

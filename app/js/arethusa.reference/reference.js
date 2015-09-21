@@ -13,8 +13,10 @@ angular.module('arethusa.reference').service('reference', [
       var retriever, persister;
       var refArr = [];
       var tokenMapRef = new Map();
+      var tokenRefMap = new Map();
       var id = 0;
       var allData;
+      //var refId;
 
       this.getAllData = function() {
           return allData;
@@ -38,6 +40,13 @@ angular.module('arethusa.reference').service('reference', [
           this.link = link;
       };
 
+      function selectedRef(id) {
+          return state.getToken(id).ref;
+      }
+      this.mapRefToToken = function(refId, cToken) {
+        tokenRefMap[cToken] = refId;
+        return tokenRefMap;
+      };
       this.createNewRef = function (ids, cToken, ref) {
           //Object.prototype.getName = function () {
           //  var funcNameRegex = /function (.{1,})\(/;
