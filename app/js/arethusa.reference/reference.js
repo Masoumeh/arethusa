@@ -47,6 +47,9 @@ angular.module('arethusa.reference').service('reference', [
         tokenRefMap[cToken] = refId;
         return tokenRefMap;
       };
+      this.getRefToToken = function() {
+        return tokenRefMap;
+      };
       this.createNewRef = function (ids, cToken, ref) {
           //Object.prototype.getName = function () {
           //  var funcNameRegex = /function (.{1,})\(/;

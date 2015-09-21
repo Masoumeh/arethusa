@@ -71,6 +71,35 @@ angular.module('arethusa.reference').directive('refInputForm', [
             }
         };
 
+          function getGeography(data) {
+              var modernCountry;
+              $.ajax("http://api.geonames.org/countrySubdivisionJSON?lat=" +
+                  data.reprPoint[1]  + "&lng=" + data.reprPoint[0] + "&username=ryanfb",
+                  {
+                      type: 'GET',
+                      dataType: 'json',
+                      crossDomain: 'true',
+                      async: false,
+                      error: function(jqXHR, textStatus, errorThrown) {
+                          return console.log("AJAX Error: " + textStatus);
+                      },
+                      success: function(data) {
+                          alert("success" + data.countryName + " " + data.adminName1);
+                          var modern_country;
+                          if (data.countryName) {
+                              modern_country = data.countryName;
+                              if (data.adminName1) {
+                                  modern_country += " > " + data.adminName1;
+                              }
+                              //scope.tokenRefs[0].country = modern_country;
+                              modernCountry= modern_country;
+                              //state.
+                          }
+                      }
+                  });
+              return modernCountry;
+          }
+
         scope.$watchCollection('state.clickedTokens', function(newVal, oldVal) {
           scope.ids = Object.keys(newVal).sort();
           scope.active = scope.ids.length;
@@ -78,6 +107,36 @@ angular.module('arethusa.reference').directive('refInputForm', [
           if(currentTokens() == "") {
               return;
           }
+
+            var refToToken = reference.getRefToToken();
+            var _results = [];
+            if(refToToken[currentTokens()] != null) {
+                scope.tokenRefs = new Array(1);
+                var res = refToToken[currentTokens()];
+                scope.tokenRefs[0] = {};
+                scope.tokenRefs[0].id = refToToken[currentTokens()];
+                //scope.tokenRefs[0].name = res[0] + "";
+                scope.tokenRefs[0].placeLink="http://pleiades.stoa.org/places/"+res;
+                scope.tokenRefs[0].country = "";
+                $.ajax("/pleiades-geojson/geojson/" + res
+                    + ".geojson", {
+                    type: 'GET',
+                    dataType: 'json',
+                    crossDomain: true,
+                    async: false,
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        return console.log("AJAX Error: " + textStatus);
+                    },
+                    success: function(data) {
+                        scope.tokenRefs[0].dsp = data.description;
+                        scope.tokenRefs[0].name = data.names[0];
+                        scope.tokenRefs[0].country = getGeography(data);
+                    }
+                });
+                return;
+                //_results.push(curre)
+            }
+
           var name_matches = reference.getAllData().filter(function(entry) {
             return begins_with(entry[0], currentTokens());
           });
@@ -85,8 +144,7 @@ angular.module('arethusa.reference').directive('refInputForm', [
                 return match[1];
           }));
 
-          var _i, _len, _results;
-          _results = [];
+          var _i, _len;
           for (_i = 0, _len = unique_ids.length; _i < _len; _i++) {
               var unique_id = unique_ids[_i];
               _results.push([
@@ -105,6 +163,8 @@ angular.module('arethusa.reference').directive('refInputForm', [
           }
           //var _results = results();
             scope.tokenRefs = new Array(_results.length);
+
+
             for(var ii = 0; ii <  _results.length; ii ++) {
                 var res = _results[ii];
                 scope.tokenRefs[ii] = {};
@@ -122,32 +182,10 @@ angular.module('arethusa.reference').directive('refInputForm', [
                         return console.log("AJAX Error: " + textStatus);
                     },
                     success: function(data) {
-                       dsp = data.description;
-                        $.ajax("http://api.geonames.org/countrySubdivisionJSON?lat=" +
-                            data.reprPoint[1]  + "&lng=" + data.reprPoint[0] + "&username=ryanfb",
-                            {
-                            type: 'GET',
-                            dataType: 'json',
-                            crossDomain: 'true',
-                                async: false,
-                            error: function(jqXHR, textStatus, errorThrown) {
-                                return console.log("AJAX Error: " + textStatus);
-                            },
-                            success: function(data) {
-                                var modern_country;
-                                if (data.countryName) {
-                                    modern_country = data.countryName;
-                                    if (data.adminName1) {
-                                        modern_country += " > " + data.adminName1;
-                                    }
-                                    scope.tokenRefs[ii].country = modern_country;
-                                    //state.
-                                }
-                            }
-                        });
+                        scope.tokenRefs[ii].dsp =  data.description;
+                        scope.tokenRefs[ii].country = getGeography(data);
                     }
                 });
-                scope.tokenRefs[ii].dsp = dsp;
             }
 
             function saveSelectedRef(){
