@@ -2,13 +2,43 @@
   <!-- ngIf opens a new scope - we therefore need a -->
   <!-- parent reference in our model -->
   <span class="italic">{{ currentTokenStrings }}</span>
+    <br/>
+    <div ng-init="$parent.ref.selector='oa:TextQuoteSelector'">
+        <label>
+        <input
+        type="radio"
+        ng-model="$parent.ref.selector"
+        value="oa:TextQuoteSelector">
+            Text Quote Selector
+        <!--ng-checked="ref.selected">-->
+        </input>
+        </label> <br/>
+        <label>
+        <input
+        type="radio"
+        ng-model="$parent.ref.selector"
+        value="oa:FragmentSelector">
+            Fragment Selector
+        <!--ng-checked="ref.selected">-->
+        </input>
+        </label><br/>
+        <label>
+        <input
+        type="radio"
+        ng-model="$parent.ref.selector"
+        value="oa:TextPositionSelector">
+            Text Position Selector
+        <!--ng-checked="ref.selected">-->
+        </input>
+        </label><br/>
+    </div>
     <div ng-repeat='ref in tokenRefs'>
         <div>
             <input
             type="radio"
             class="postag-selector"
             ng-model="$parent.ref.id"
-            ng-value="ref.id"
+            ng-value="ref.id">
             <!--ng-checked="ref.selected">-->
             </input>
             <!--<input type="radio" name="refers"/>-->

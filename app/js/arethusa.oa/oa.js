@@ -49,6 +49,7 @@ angular.module('arethusa.oa').service('oa', [
       configure();
 
       self.annotations = createInternalAnnotations();
+      oaHandler.setPersister(persister);
       retriever.get(function(data) { console.log(data); });
     };
   }

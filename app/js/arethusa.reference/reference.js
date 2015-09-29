@@ -3,11 +3,11 @@
 angular.module('arethusa.reference').service('reference', [
   'state',
   'configurator',
-  'plugins',
   'navigator',
-    'oa',
-    '$http',
-  function(state, configurator, navigator, plugins, oa, $http) {
+  'plugins',
+  'oaPersister',
+  '$http',
+  function(state, configurator, navigator, plugins, oaPersister, $http) {
       var self = this;
       this.name = 'reference';
       var retriever, persister;
@@ -16,18 +16,19 @@ angular.module('arethusa.reference').service('reference', [
       var tokenRefMap = new Map();
       var id = 0;
       var allData;
+      var conf;
       //var refId;
 
       this.getAllData = function() {
           return allData;
-      }
+      };
 
       this.defaultConf = {
           template: 'templates/arethusa.reference/reference.html'
       };
 
       function configure() {
-          configurator.getConfAndDelegate(self);
+          conf = configurator.getConfAndDelegate(self);
           retriever = configurator.getRetriever(self.conf.retriever);
           persister = retriever;
       };
@@ -50,13 +51,18 @@ angular.module('arethusa.reference').service('reference', [
       this.getRefToToken = function() {
         return tokenRefMap;
       };
-      this.createNewRef = function (ids, cToken, ref) {
-          //Object.prototype.getName = function () {
+      this.createNewRef = function (id, selectorClass, cToken, ref) {
+          var oaPersist = new oaPersister(conf);
+          var oa = oaPersist.oa(id, "oa:identifying", selectorClass, saveSuccess, saveError);
+          //alert("oa:" + JSON.stringify(oa, null, 4));
+          oaPersist.save(oa);
+          //oaPersister.save(id, saveSuccess, saveError);
+              //Object.prototype.getName = function () {
           //  var funcNameRegex = /function (.{1,})\(/;
           //  var results = (funcNameRegex).exec((this).constructor.toString());
           //  return (results && results.length > 1) ? results[1] : "";
           //};
-          var newRef = new Ref(id, ids, cToken, ref);
+          //var newRef = new Ref(id, ids, cToken, ref);
           //id++;
           var oa = {};
 
@@ -70,7 +76,7 @@ angular.module('arethusa.reference').service('reference', [
           //        tokenMapRef[cToken] = ref;
           //  }
           //  persister.saveData(refArr, saveSuccess, saveError);
-          return [refArr, tokenMapRef];
+          //return [refArr, tokenMapRef];
       };
 
       this.splitRefs = function (map, key) {
@@ -92,11 +98,11 @@ angular.module('arethusa.reference').service('reference', [
       };
 
       function saveSuccess() {
-          //alert('success');
+          alert('success');
       };
 
       function saveError() {
-          //alert('error');
+          alert('error');
       };
 
       this.init = function () {
