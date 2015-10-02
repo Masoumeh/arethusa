@@ -63,7 +63,6 @@ var exampleFileRoutes = {
   'tei' : 'xml',
   'oa' : 'json',
   'reference': 'json',
-
   'treebanks/phaidra': 'json',
   'translations/phaidra': 'json'
 };

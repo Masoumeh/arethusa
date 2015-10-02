@@ -9,8 +9,8 @@ angular.module('arethusa.reference').factory('ReferenceRetriever', [
       var resource = configurator.provideResource(conf.resource);
 
       this.saveData = function(ref,success,error) {
-          oaPersister.save('mamad');
-        //resource.save(ref).then(success,error);
+          //oaPersister.save('mamad');
+        resource.save(ref).then(success,error);
       };
 
       this.get = function(callback) {

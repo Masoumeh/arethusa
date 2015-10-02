@@ -10,7 +10,7 @@ angular.module('arethusa.oa').factory('oaPersister', [
           var self = this;
           res = configurator.provideResource(conf.resource);
 
-          this.oa = function (refId, motiv, selectorClass, callback, errCallback) {
+          this.createOA = function (refId, motiv, selectorClass) {
               var oa = {};
               oa["@context"] = "http://www.w3.org/ns/oa-context-20130208.json";
               oa["@id"] = "id";
@@ -35,7 +35,7 @@ angular.module('arethusa.oa').factory('oaPersister', [
               return oa;
           };
 
-          this.save = function (oa) {
+          this.save = function (oa,callback,errCallback) {
               res.save(oa, self.mimeType).then(callback, errCallback);
           };
 

@@ -5,9 +5,9 @@ angular.module('arethusa.reference').service('reference', [
   'configurator',
   'navigator',
   'plugins',
-  'oaPersister',
+  'oa',
   '$http',
-  function(state, configurator, navigator, plugins, oaPersister, $http) {
+  function(state, configurator, navigator, plugins, oa, $http) {
       var self = this;
       this.name = 'reference';
       var retriever, persister;
@@ -52,31 +52,8 @@ angular.module('arethusa.reference').service('reference', [
         return tokenRefMap;
       };
       this.createNewRef = function (id, selectorClass, cToken, ref) {
-          var oaPersist = new oaPersister(conf);
-          var oa = oaPersist.oa(id, "oa:identifying", selectorClass, saveSuccess, saveError);
-          //alert("oa:" + JSON.stringify(oa, null, 4));
-          oaPersist.save(oa);
-          //oaPersister.save(id, saveSuccess, saveError);
-              //Object.prototype.getName = function () {
-          //  var funcNameRegex = /function (.{1,})\(/;
-          //  var results = (funcNameRegex).exec((this).constructor.toString());
-          //  return (results && results.length > 1) ? results[1] : "";
-          //};
-          //var newRef = new Ref(id, ids, cToken, ref);
-          //id++;
-          var oa = {};
-
-          //body["places"].push(oa);
-
-          //refArr.push(body);
-          //    if (cToken in tokenMapRef) {
-          //        tokenMapRef[cToken] = tokenMapRef[cToken] + "|" + ref;
-          //  }
-          //  else {
-          //        tokenMapRef[cToken] = ref;
-          //  }
-          //  persister.saveData(refArr, saveSuccess, saveError);
-          //return [refArr, tokenMapRef];
+          var oaObject = oa.createOA(id, "oa:identifying", "oaTextQouteSelector");
+          persister.saveData(oaObject,saveSuccess,saveError);
       };
 
       this.splitRefs = function (map, key) {

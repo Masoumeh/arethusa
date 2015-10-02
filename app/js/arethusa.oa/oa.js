@@ -36,8 +36,8 @@ angular.module('arethusa.oa').service('oa', [
       return oaHandler.generateTarget(Object.keys(state.clickedTokens));
     };
 
-    this.save = function(target, body) {
-      console.log(target, body);
+    this.createOA = function(refId, motiv, selectorClass) {
+      return persister.createOA(refId, motiv, selectorClass);
     };
 
     this.ontologies = {
@@ -49,7 +49,7 @@ angular.module('arethusa.oa').service('oa', [
       configure();
 
       self.annotations = createInternalAnnotations();
-      oaHandler.setPersister(persister);
+      //oaHandler.setPersister(persister);
       retriever.get(function(data) { console.log(data); });
     };
   }
