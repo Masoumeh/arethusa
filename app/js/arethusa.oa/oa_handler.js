@@ -8,9 +8,9 @@ angular.module('arethusa.oa').service('oaHandler', [
   function(uriGenerator, state, configurator, documentStore) {
     var self = this;
 
-    this.getURI = function(){
-      return uriGenerator.generateURI();
-    }
+    //this.getURI = function(){
+    //  return uriGenerator.generateURI();
+    //}
 
     this.getCurrentDate = function() {
       var d = new Date();

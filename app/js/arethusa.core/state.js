@@ -529,13 +529,45 @@ angular.module('arethusa.core').service('state', [
 
     this.prevToken = function() {
       return self.tokens[this.neighbourTokens('prev')];
+    };
+
+    this.nextIthToken = function(i) {
+      return self.tokens[this.neighbourIthToken('next', i)];
     }
+
+    this.prevIthToken = function(i) {
+      return self.tokens[this.neighbourIthToken('prev', i)];
+    };
 
     this.selectNextToken = function () {
       selectSurroundingToken('next');
     };
+
     this.selectPrevToken = function () {
       selectSurroundingToken('prev');
+    };
+
+    this.neighbourIthToken = function (direction, i) {
+      var firstId = self.firstSelected();
+      var allIds = Object.keys(self.tokens);
+      var index = allIds.indexOf(firstId);
+      // select newId - make a roundtrip if we reached the bounds of the array
+      var newId;
+      switch (direction) {
+        case 'next':
+        {
+          newId = allIds[index + i] || allIds[i - 1];
+          alert("next newId: " + newId);
+          break;
+        }
+        case 'prev':
+        {
+          newId = allIds[index - i] || allIds[allIds.length - i];
+          alert("prev newId: " + newId);
+          break;
+        }
+      }
+      return newId;
     };
 
     this.toTokenStrings = function(ids) {

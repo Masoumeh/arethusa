@@ -11,7 +11,7 @@ angular.module('arethusa.reference').service('reference', [
       var self = this;
       this.name = 'reference';
       var retriever, persister;
-      var refArr = [];
+      //var refArr = [];
       var tokenMapRef = new Map();
       var tokenRefMap = new Map();
       var id = 0;
@@ -44,21 +44,35 @@ angular.module('arethusa.reference').service('reference', [
       function selectedRef(id) {
           return state.getToken(id).ref;
       }
+
       this.mapRefToToken = function(refId, cToken) {
         tokenRefMap[cToken] = refId;
         return tokenRefMap;
       };
+
       this.getRefToToken = function() {
         return tokenRefMap;
       };
-      this.createNewRef = function (id, selectorClass, cToken, ref) {
-          var oaObject = oa.createOA(id, "oa:identifying", "oaTextQouteSelector");
+
+      this.createNewRef = function (id, selectorClass, cToken, preNum, sufNum) {
+          var oaObject = {};
+          angular.forEach(state.selectedTokens, function (token) {
+              var oaObj = oa.createOA(id, "oa:identifying", selectorClass, preNum, sufNum);
+              oaObject.push(oaObj);
+          });
+          alert("oaObject length: " +oaObject.length);
           persister.saveData(oaObject,saveSuccess,saveError);
       };
 
+      this.tokensRef = function (tokens, id, selectorClass, cToken, preNum, sufNum) {
+          angular.forEach(tokens, function (id) {
+             this.createNewRef(id, selectorClass, cToken, preNum, sufNum);
+          });
+      }
       this.splitRefs = function (map, key) {
           return map[key].split('|').toString();
       };
+
       function getRefs() {
 
           retriever.get(function (refs) {
@@ -94,6 +108,7 @@ angular.module('arethusa.reference').service('reference', [
                   return console.log("AJAX Error: " + textStatus);
               },
               success: function (data) {
+                  alert("getAllData success");
                   allData = data;
                   //alert("success " + search_for("Rome",data));
               }

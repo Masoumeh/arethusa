@@ -1,57 +1,71 @@
 <form ng-if="active">
   <!-- ngIf opens a new scope - we therefore need a -->
   <!-- parent reference in our model -->
-  <span class="italic">{{ currentTokenStrings }}</span>
-    <br/>
-    <div ng-init="$parent.ref.selector='oa:TextQuoteSelector'">
-        <label>
-        <input
-        type="radio"
-        ng-model="$parent.ref.selector"
-        value="oa:TextQuoteSelector">
-            Text Quote Selector
-        <!--ng-checked="ref.selected">-->
-        </input>
-        </label> <br/>
-        <label>
-        <input
-        type="radio"
-        ng-model="$parent.ref.selector"
-        value="oa:FragmentSelector">
-            Fragment Selector
-        <!--ng-checked="ref.selected">-->
-        </input>
-        </label><br/>
-        <label>
-        <input
-        type="radio"
-        ng-model="$parent.ref.selector"
-        value="oa:TextPositionSelector">
-            Text Position Selector
-        <!--ng-checked="ref.selected">-->
-        </input>
-        </label><br/>
-    </div>
-    <div ng-repeat='ref in tokenRefs'>
+  <!--<span class="italic">{{ currentTokenStrings }}</span>-->
+    <!--<br/><br/><br/>-->
+    <div ng-repeat='tok in splittedTokens'>
         <div>
-            <input
-            type="radio"
-            class="postag-selector"
-            ng-model="$parent.ref.id"
-            ng-value="ref.id">
-            <!--ng-checked="ref.selected">-->
-            </input>
-            <!--<input type="radio" name="refers"/>-->
-            <a href={{ref.placeLink}}>{{ref.name}}</a> "-" {{ref.id}}</div>
-        <div>{{ref.dsp}}</div>
-        <div>{{ref.country}}</div>
-        <br/><br/><br/>
+        <label class="bold">Text Quote Selector words in context:</label> <br/>
+        <label>Exact target: {{ tok }}</label><br/>
+        <label>Prefix: <div><input type="number" ng-model="$parent.ref.preNum" id="preNum" value="1" min="1" max="99">
+                        </div>
+        </label>
+        <br/>
+        <label>Suffix: <div><input type="number" ng-model="$parent.ref.sufNum" id="sufNum" value="1" min="1" max="99">
+                       </div>
+        </label>
+        <br/>
+        </div>
+    <!--<div ng-init="$parent.ref.selector='oa:TextQuoteSelector'">-->
+        <!--<label class="bold">Text Selector: </label>-->
+        <!--<br/>-->
+        <!--<input-->
+                <!--type="radio"-->
+                <!--ng-model="$parent.ref.selector"-->
+                <!--value="oa:TextQuoteSelector">-->
+            <!--&lt;!&ndash;ng-checked="ref.selected">&ndash;&gt;-->
+        <!--</input>-->
+        <!--<label>Text Quote Selector</label>-->
+        <!--<input-->
+                <!--type="radio"-->
+                <!--ng-model="$parent.ref.selector"-->
+                <!--value="oa:TextPositionSelector">-->
+        <!--&lt;!&ndash;ng-checked="ref.selected">&ndash;&gt;-->
+        <!--</input>-->
+        <!--<label>Text Position Selector</label><br/>-->
+        <!--<input-->
+                <!--type="radio"-->
+                <!--ng-model="$parent.ref.selector"-->
+                <!--value="oa:FragmentSelector">-->
+
+        <!--&lt;!&ndash;ng-checked="ref.selected">&ndash;&gt;-->
+        <!--</input>-->
+        <!--<label>Fragment Selector</label><br/><br/>-->
+    <!--</div>-->
+        <label class="italic">References for {{ tok }}<label><br/><br/>
+        <div ng-repeat='ref in tokenRefs'>
+            <div ng-if = "ref.tokenString == tok">
+                <input
+                type="radio"
+                class="postag-selector"
+                ng-model="$parent.ref.id"
+                ng-value="ref.id">
+                <!--ng-checked="ref.selected">-->
+                </input>
+                <!--<input type="radio" name="refers"/>-->
+                <a href={{ref.placeLink}}>{{ref.name}}</a> "-" {{ref.id}}
+
+            <div>{{ref.dsp}}</div>
+            <div>{{ref.country}}</div>
+            </div>
+                <br/><br/><br/>
+        </div>
+        <span
+          ng-click="submit()"
+          class="button micro radius"
+          translate="submit selected">
+        </span>
     </div>
-    <span
-      ng-click="submit()"
-      class="button micro radius"
-      translate="submit selected">
-  </span>
   <!--<textarea-->
     <!--focus-me="active"-->
     <!--rows="3"-->
