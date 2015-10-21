@@ -1,0 +1,16 @@
+{
+  "type": "FeatureCollection",
+  "title": "Via Sebaste: Apollonia ↔ Antiochia ↔ Neapolis",
+  "id": "33128252",
+  "description": "A road network in Pisidia originally built by the governor Cornutus Aquila, beginning ca. 6 BC.",
+  "bbox": [
+    30.198157,
+    37.803384,
+    34.038591,
+    38.430816
+  ],
+  "reprPoint": [
+    31.6261000833,
+    38.0777217222
+  ]
+}

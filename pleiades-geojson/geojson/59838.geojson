@@ -1,0 +1,64 @@
+{
+  "type": "FeatureCollection",
+  "title": "Hydraotes/Arouadis/Porrus (river)",
+  "id": "59838",
+  "description": "A river of the Punjab that flows southwest from the western Himalaya and joins the river Acesines.",
+  "bbox": [
+    74.5275078,
+    31.7196227,
+    74.5275078,
+    31.7196227
+  ],
+  "connectsWith": [
+    "59664"
+  ],
+  "reprPoint": [
+    74.5275078,
+    31.7196227
+  ],
+  "names": [
+    "Hydraotes",
+    "Arouadis",
+    "Porrus",
+    "Hiarotis"
+  ],
+  "features": [
+    {
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              70.0,
+              30.0
+            ],
+            [
+              70.0,
+              35.0
+            ],
+            [
+              75.0,
+              35.0
+            ],
+            [
+              75.0,
+              30.0
+            ],
+            [
+              70.0,
+              30.0
+            ]
+          ]
+        ]
+      },
+      "id": "batlas-location",
+      "type": "Feature",
+      "properties": {
+        "description": null,
+        "location_precision": "rough",
+        "title": "Barrington Atlas location",
+        "link": "http://pleiades.stoa.org/places/59838/batlas-location"
+      }
+    }
+  ]
+}

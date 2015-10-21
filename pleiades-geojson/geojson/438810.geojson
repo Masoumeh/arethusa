@@ -1,0 +1,25 @@
+{
+  "type": "FeatureCollection",
+  "title": "Plistia",
+  "id": "438810",
+  "description": "A town of Samnium located near Saticula, perhaps at modern Prestia.",
+  "reprPoint": [
+    12.7789894,
+    41.8822951
+  ],
+  "names": [
+    "Plistia"
+  ],
+  "features": [
+    {
+      "id": "batlas-location",
+      "type": "Feature",
+      "properties": {
+        "description": null,
+        "location_precision": "unlocated",
+        "title": "Barrington Atlas location",
+        "link": "http://pleiades.stoa.org/places/438810/batlas-location"
+      }
+    }
+  ]
+}

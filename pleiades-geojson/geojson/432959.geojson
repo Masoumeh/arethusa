@@ -1,0 +1,38 @@
+{
+  "type": "FeatureCollection",
+  "title": "Monte S. Croce",
+  "id": "432959",
+  "description": "An ancient place, cited: BAtlas 44 E3 Monte S. Croce",
+  "bbox": [
+    13.9725,
+    41.288217,
+    13.9846392,
+    41.3032542
+  ],
+  "connectsWith": [
+    "433077"
+  ],
+  "reprPoint": [
+    13.9800860667,
+    41.2961385333
+  ],
+  "features": [
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.983119,
+          41.288217
+        ]
+      },
+      "id": "location-of-roccamonfina",
+      "type": "Feature",
+      "properties": {
+        "description": "Location based on OpenStreetMap",
+        "location_precision": "precise",
+        "title": "location of Roccamonfina",
+        "link": "http://pleiades.stoa.org/places/432959/location-of-roccamonfina"
+      }
+    }
+  ]
+}

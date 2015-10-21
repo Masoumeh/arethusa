@@ -1,0 +1,25 @@
+{
+  "type": "FeatureCollection",
+  "title": "Kryassos",
+  "id": "606321",
+  "description": "An ancient place, cited: BAtlas 61 unlocated Kryassos",
+  "reprPoint": [
+    25.37,
+    37.44
+  ],
+  "names": [
+    "Kryassos"
+  ],
+  "features": [
+    {
+      "id": "undetermined",
+      "type": "Feature",
+      "properties": {
+        "description": null,
+        "location_precision": "unlocated",
+        "title": "Undetermined location",
+        "link": "http://pleiades.stoa.org/places/606321/undetermined"
+      }
+    }
+  ]
+}

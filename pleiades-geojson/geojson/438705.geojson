@@ -1,0 +1,34 @@
+{
+  "type": "FeatureCollection",
+  "title": "Capitulum Hernicum",
+  "id": "438705",
+  "description": "A Hernican town that still existed in Pliny's time, Capitulum Hernicum received colonists under both Sulla and Iulius Caesar.",
+  "bbox": [
+    13.0,
+    41.75,
+    13.25,
+    42.0
+  ],
+  "connectsWith": [
+    "422944"
+  ],
+  "reprPoint": [
+    13.125,
+    41.875
+  ],
+  "names": [
+    "Capitulum Hernicum"
+  ],
+  "features": [
+    {
+      "id": "batlas-location",
+      "type": "Feature",
+      "properties": {
+        "description": null,
+        "location_precision": "unlocated",
+        "title": "Barrington Atlas location",
+        "link": "http://pleiades.stoa.org/places/438705/batlas-location"
+      }
+    }
+  ]
+}

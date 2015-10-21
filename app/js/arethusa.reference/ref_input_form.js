@@ -183,7 +183,10 @@ angular.module('arethusa.reference').directive('refInputForm', [
 
               function getTokenRef(_results, ii) {
                   //alert("results length: " + _results.length);
-                  if(ii ==_results.length) return;
+                  if(ii ==_results.length) {	
+			  scope.tokenRefs2 = scope.tokenRefs
+			return;
+                  }
                   var res = _results[ii];
                   //alert(JSON.stringify("results 0 : " + res[0],null,4));
                   //alert(JSON.stringify("results 1 : " + res[1],null,4));
@@ -225,7 +228,7 @@ angular.module('arethusa.reference').directive('refInputForm', [
 
                   scope.refToToken = reference.getRefToToken();
                   var _results = [];
-                  scope.tokenRefs = new Array(scope.splittedTokens.length);
+                  //scope.tokenRefs = new Array(scope.splittedTokens.length);
                   //for (var i = 0; i < scope.splittedTokens.length; i++) {
                   //    var sptok = scope.splittedTokens[i];
                   //    if (refToToken[scope.splittedTokens[i]] != null) {
@@ -257,9 +260,8 @@ angular.module('arethusa.reference').directive('refInputForm', [
                   _results = results();
                   //scope.resultToTokenMap = new Map(_results.length);
                   angular.forEach(scope.splittedTokens, function (spToken) {
-                      //alert("spToken: " + spToken);
-                      //scope.resultToTokenMap = scope.mapResultsToToken(_results, spToken);
-                      _results = scope.mapResultsToToken(_results, spToken);
+                      scope.resultToTokenMap = scope.mapResultsToToken(_results, spToken);
+                   //   _results = scope.mapResultsToToken(_results, spToken);
                   });
 
                   //alert(JSON.stringify("result to token map: " + scope.resultToTokenMap, null, 4));

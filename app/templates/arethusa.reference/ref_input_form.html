@@ -2,7 +2,6 @@
   <!-- ngIf opens a new scope - we therefore need a -->
   <!-- parent reference in our model -->
   <!--<span class="italic">{{ currentTokenStrings }}</span>-->
-    <!--<br/><br/><br/>-->
     <div ng-repeat='tok in splittedTokens'>
         <div>
         <label class="bold">Text Quote Selector words in context:</label> <br/>
@@ -16,49 +15,22 @@
         </label>
         <br/>
         </div>
-    <!--<div ng-init="$parent.ref.selector='oa:TextQuoteSelector'">-->
-        <!--<label class="bold">Text Selector: </label>-->
-        <!--<br/>-->
-        <!--<input-->
-                <!--type="radio"-->
-                <!--ng-model="$parent.ref.selector"-->
-                <!--value="oa:TextQuoteSelector">-->
-            <!--&lt;!&ndash;ng-checked="ref.selected">&ndash;&gt;-->
-        <!--</input>-->
-        <!--<label>Text Quote Selector</label>-->
-        <!--<input-->
-                <!--type="radio"-->
-                <!--ng-model="$parent.ref.selector"-->
-                <!--value="oa:TextPositionSelector">-->
-        <!--&lt;!&ndash;ng-checked="ref.selected">&ndash;&gt;-->
-        <!--</input>-->
-        <!--<label>Text Position Selector</label><br/>-->
-        <!--<input-->
-                <!--type="radio"-->
-                <!--ng-model="$parent.ref.selector"-->
-                <!--value="oa:FragmentSelector">-->
-
-        <!--&lt;!&ndash;ng-checked="ref.selected">&ndash;&gt;-->
-        <!--</input>-->
-        <!--<label>Fragment Selector</label><br/><br/>-->
-    <!--</div>-->
-        <label class="italic">References for {{ tok }}<label><br/><br/>
-        <div ng-repeat='ref in tokenRefs'>
+       <label class="italic">References for {{ tok }}<label><br/><br/>
+        <div ng-repeat='ref in tokenRefs2'>
             <div ng-if = "ref.tokenString == tok">
                 <input
                 type="radio"
                 class="postag-selector"
+                name="ref.id"
                 ng-model="$parent.ref.id"
-                ng-value="ref.id">
-                <!--ng-checked="ref.selected">-->
+                ng-value="ref.id"
+                ng-ini="''">
                 </input>
-                <!--<input type="radio" name="refers"/>-->
                 <a href={{ref.placeLink}}>{{ref.name}}</a> "-" {{ref.id}}
-
             <div>{{ref.dsp}}</div>
             <div>{{ref.country}}</div>
             </div>
-                <br/><br/><br/>
+                <br/><br/>
         </div>
         <span
           ng-click="submit()"
@@ -66,38 +38,4 @@
           translate="submit selected">
         </span>
     </div>
-  <!--<textarea-->
-    <!--focus-me="active"-->
-    <!--rows="3"-->
-    <!--placeholder="{{ markdownPlaceholder}}"-->
-    <!--ng-model="$parent.ref"/>-->
-  <!--<span-->
-    <!--ng-click="submit()"-->
-    <!--class="button micro radius"-->
-    <!--translate="submit">-->
-  <!--</span>-->
-  <!--<hr class="small"/>-->
-  <!--<div class="fade-in"-->
-       <!--ng-repeat='(token, ref) in tokenMapRef'>-->
-       <!--<div class="comment">-->
-       <!--<div class="comment-header">-->
-         <!--<div class="comment-body">-->
-             <!--&lt;!&ndash;<span reference-targets="token"/>&ndash;&gt;-->
-           <!--<span translate="comments.on"/>-->
-           <!--<span-->
-                   <!--class="normal-size"-->
-                   <!--colorize="true"-->
-                   <!--click="true"-->
-                   <!--hover="true">-->
-                    <!--{{token}}-->
-           <!--</span>-->
-           <!--<hr>-->
-           <!--<span ng-repeat="comment in splitRefs(token) track by $index">-->
-             <!--{{comment}}-->
-           <!--</span>-->
-         <!--</div>-->
-       <!--</div>-->
-       <!--</div>-->
-<!--</div>-->
-
 </form>

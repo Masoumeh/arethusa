@@ -1,0 +1,25 @@
+{
+  "type": "FeatureCollection",
+  "title": "Umbritae",
+  "id": "60711",
+  "description": "An ancient place, cited: BAtlas 6 unlocated Umbritae",
+  "reprPoint": [
+    25.37,
+    37.44
+  ],
+  "names": [
+    "Umbritae"
+  ],
+  "features": [
+    {
+      "id": "batlas-location",
+      "type": "Feature",
+      "properties": {
+        "description": null,
+        "location_precision": "unlocated",
+        "title": "Barrington Atlas location",
+        "link": "http://pleiades.stoa.org/places/60711/batlas-location"
+      }
+    }
+  ]
+}

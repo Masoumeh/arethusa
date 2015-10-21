@@ -1,0 +1,63 @@
+{
+  "type": "FeatureCollection",
+  "title": "Africum Mare",
+  "id": "776",
+  "description": "An ancient place, cited: BAtlas 1 D3/F3 Africum Mare",
+  "bbox": [
+    11.9999826,
+    35.0000035,
+    19.9999957,
+    39.9999753
+  ],
+  "connectsWith": [
+    "1043",
+    "462492",
+    "1356"
+  ],
+  "reprPoint": [
+    15.99998915,
+    37.4999894
+  ],
+  "names": [
+    "Africum Mare"
+  ],
+  "features": [
+    {
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              0.0,
+              35.0
+            ],
+            [
+              0.0,
+              40.0
+            ],
+            [
+              15.0,
+              40.0
+            ],
+            [
+              15.0,
+              35.0
+            ],
+            [
+              0.0,
+              35.0
+            ]
+          ]
+        ]
+      },
+      "id": "batlas-location",
+      "type": "Feature",
+      "properties": {
+        "description": null,
+        "location_precision": "rough",
+        "title": "Barrington Atlas location",
+        "link": "http://pleiades.stoa.org/places/776/batlas-location"
+      }
+    }
+  ]
+}

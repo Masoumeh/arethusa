@@ -1,0 +1,42 @@
+{
+  "type": "FeatureCollection",
+  "title": "Rheneia (island)",
+  "id": "599919",
+  "description": "A Cycladic island just west of Delos in the Aegean Sea. It consists of two parts linked by a narrow isthmus.",
+  "bbox": [
+    25.229,
+    37.409,
+    25.229,
+    37.409
+  ],
+  "connectsWith": [
+    "560353"
+  ],
+  "reprPoint": [
+    25.229,
+    37.409
+  ],
+  "names": [
+    "Rhḗneia",
+    "Rheneia"
+  ],
+  "features": [
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.229,
+          37.409
+        ]
+      },
+      "id": "location-of-rheneia-ins",
+      "type": "Feature",
+      "properties": {
+        "description": "Coordinates after Wikipedia; verified in Google Earth 2013.",
+        "location_precision": "precise",
+        "title": "location of Rheneia Ins.",
+        "link": "http://pleiades.stoa.org/places/599919/location-of-rheneia-ins"
+      }
+    }
+  ]
+}

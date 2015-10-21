@@ -1,0 +1,39 @@
+{
+  "type": "FeatureCollection",
+  "title": "Oxyrhynchus/Pemje",
+  "id": "736983",
+  "description": "A city of Upper Egypt, Oxyrhynchus/Pemje is particularly well known as an archaeological site that has produced important papyrus manuscripts of ancient texts.",
+  "bbox": [
+    30.65172,
+    28.542574,
+    30.65172,
+    28.542574
+  ],
+  "reprPoint": [
+    30.65172,
+    28.542574
+  ],
+  "names": [
+    "Oxyrhynchus",
+    "Pemje"
+  ],
+  "features": [
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.65172,
+          28.542574
+        ]
+      },
+      "id": "dare-location",
+      "type": "Feature",
+      "properties": {
+        "description": "Representative point location, site precision",
+        "location_precision": "precise",
+        "title": "DARE Location",
+        "link": "http://pleiades.stoa.org/places/736983/dare-location"
+      }
+    }
+  ]
+}

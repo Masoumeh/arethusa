@@ -1,0 +1,64 @@
+{
+  "type": "FeatureCollection",
+  "title": "Ionia (region)",
+  "id": "550597",
+  "description": "The coast of Asia Minor between Aeolis and Caria.",
+  "bbox": [
+    26.785014,
+    38.004725,
+    28.1112899,
+    38.5178164
+  ],
+  "connectsWith": [
+    "550406",
+    "599564",
+    "550701"
+  ],
+  "reprPoint": [
+    27.3630969667,
+    38.2332678
+  ],
+  "names": [
+    "Ionia",
+    "Iōnía"
+  ],
+  "features": [
+    {
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              26.5,
+              38.5
+            ],
+            [
+              26.5,
+              39.0
+            ],
+            [
+              27.0,
+              39.0
+            ],
+            [
+              27.0,
+              38.5
+            ],
+            [
+              26.5,
+              38.5
+            ]
+          ]
+        ]
+      },
+      "id": "undetermined",
+      "type": "Feature",
+      "properties": {
+        "description": null,
+        "location_precision": "rough",
+        "title": "Undetermined location",
+        "link": "http://pleiades.stoa.org/places/550597/undetermined"
+      }
+    }
+  ]
+}

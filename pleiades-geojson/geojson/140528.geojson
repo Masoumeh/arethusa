@@ -1,0 +1,35 @@
+{
+  "type": "FeatureCollection",
+  "title": "Unnamed villa",
+  "id": "140528",
+  "description": "The remains of a small Gallo-Roman villa with a bath establishment were discovered near a spring.",
+  "bbox": [
+    1.880191,
+    44.491186,
+    1.880191,
+    44.491186
+  ],
+  "reprPoint": [
+    1.880191,
+    44.491186
+  ],
+  "features": [
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1.880191,
+          44.491186
+        ]
+      },
+      "id": "center-of-batlas-location",
+      "type": "Feature",
+      "properties": {
+        "description": "The center of the commune noted in the Barrington Atlas directory",
+        "location_precision": "precise",
+        "title": "Center point of location",
+        "link": "http://pleiades.stoa.org/places/140528/center-of-batlas-location"
+      }
+    }
+  ]
+}

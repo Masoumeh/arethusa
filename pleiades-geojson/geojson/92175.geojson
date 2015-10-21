@@ -1,0 +1,25 @@
+{
+  "type": "FeatureCollection",
+  "title": "Ouidoua",
+  "id": "92175",
+  "description": "An ancient place, cited: BAtlas 9 unlocated Ouidoua fl.",
+  "reprPoint": [
+    -3.9768342,
+    54.9593498
+  ],
+  "names": [
+    "Ouidoua"
+  ],
+  "features": [
+    {
+      "id": "undetermined",
+      "type": "Feature",
+      "properties": {
+        "description": null,
+        "location_precision": "unlocated",
+        "title": "Undetermined location",
+        "link": "http://pleiades.stoa.org/places/92175/undetermined"
+      }
+    }
+  ]
+}

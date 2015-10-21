@@ -1,0 +1,34 @@
+{
+  "type": "FeatureCollection",
+  "title": "Romulea",
+  "id": "438820",
+  "description": "Now unlocated, Romulea was captured by the Romans during the Third Samnite War.",
+  "bbox": [
+    14.5,
+    41.0,
+    15.0,
+    41.5
+  ],
+  "connectsWith": [
+    "442614"
+  ],
+  "reprPoint": [
+    14.75,
+    41.25
+  ],
+  "names": [
+    "Romulea"
+  ],
+  "features": [
+    {
+      "id": "batlas-location",
+      "type": "Feature",
+      "properties": {
+        "description": null,
+        "location_precision": "unlocated",
+        "title": "Barrington Atlas location",
+        "link": "http://pleiades.stoa.org/places/438820/batlas-location"
+      }
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "type": "FeatureCollection",
+  "title": "Hippuri Pr.",
+  "id": "50000",
+  "description": "An ancient place, cited: BAtlas 5 inset Hippuri Pr.",
+  "bbox": [
+    79.866667,
+    8.533333,
+    79.866667,
+    8.533333
+  ],
+  "connectsWith": [
+    "50298"
+  ],
+  "reprPoint": [
+    79.866667,
+    8.533333
+  ],
+  "names": [
+    "Hippuri Pr."
+  ],
+  "features": [
+    {
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              75.0,
+              5.0
+            ],
+            [
+              75.0,
+              15.0
+            ],
+            [
+              85.0,
+              15.0
+            ],
+            [
+              85.0,
+              5.0
+            ],
+            [
+              75.0,
+              5.0
+            ]
+          ]
+        ]
+      },
+      "id": "batlas-location",
+      "type": "Feature",
+      "properties": {
+        "description": null,
+        "location_precision": "rough",
+        "title": "Barrington Atlas location",
+        "link": "http://pleiades.stoa.org/places/50000/batlas-location"
+      }
+    }
+  ]
+}

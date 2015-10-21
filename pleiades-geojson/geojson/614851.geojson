@@ -1,0 +1,34 @@
+{
+  "type": "FeatureCollection",
+  "title": "Tautaendia",
+  "id": "614851",
+  "description": "An ancient place, cited: BAtlas 62 unlocated Tautaendia",
+  "bbox": [
+    30.5368013,
+    40.8561807,
+    30.6489,
+    41.1264
+  ],
+  "connectsWith": [
+    "511406"
+  ],
+  "reprPoint": [
+    30.59285065,
+    40.99129035
+  ],
+  "names": [
+    "Tautaendia"
+  ],
+  "features": [
+    {
+      "id": "undetermined",
+      "type": "Feature",
+      "properties": {
+        "description": null,
+        "location_precision": "unlocated",
+        "title": "Undetermined location",
+        "link": "http://pleiades.stoa.org/places/614851/undetermined"
+      }
+    }
+  ]
+}

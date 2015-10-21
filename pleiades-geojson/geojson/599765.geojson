@@ -1,0 +1,58 @@
+{
+  "type": "FeatureCollection",
+  "title": "Lethaios (river)",
+  "id": "599765",
+  "description": "An ancient place, cited: BAtlas 61 E2 Lethaios fl.",
+  "bbox": [
+    28.8397377,
+    38.157824,
+    28.8397377,
+    38.157824
+  ],
+  "reprPoint": [
+    28.8397377,
+    38.157824
+  ],
+  "names": [
+    "Lethaios"
+  ],
+  "features": [
+    {
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              27.0,
+              37.5
+            ],
+            [
+              27.0,
+              38.0
+            ],
+            [
+              27.5,
+              38.0
+            ],
+            [
+              27.5,
+              37.5
+            ],
+            [
+              27.0,
+              37.5
+            ]
+          ]
+        ]
+      },
+      "id": "undetermined",
+      "type": "Feature",
+      "properties": {
+        "description": null,
+        "location_precision": "rough",
+        "title": "Undetermined location",
+        "link": "http://pleiades.stoa.org/places/599765/undetermined"
+      }
+    }
+  ]
+}

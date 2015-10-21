@@ -1,0 +1,39 @@
+{
+  "type": "FeatureCollection",
+  "title": "Cimitero Maggiore",
+  "id": "422894",
+  "description": "A major Roman necropolis and catacomb along the Via Nomentana.",
+  "bbox": [
+    12.515972,
+    41.923233,
+    12.515972,
+    41.923233
+  ],
+  "connectsWith": [
+    "699256589",
+    "423025"
+  ],
+  "reprPoint": [
+    12.515972,
+    41.923233
+  ],
+  "features": [
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.515972,
+          41.923233
+        ]
+      },
+      "id": "darmc-location-23144",
+      "type": "Feature",
+      "properties": {
+        "description": "Point location",
+        "location_precision": "precise",
+        "title": "DARMC location 23144",
+        "link": "http://pleiades.stoa.org/places/422894/darmc-location-23144"
+      }
+    }
+  ]
+}
