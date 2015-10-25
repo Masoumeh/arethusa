@@ -8,15 +8,16 @@ angular.module('arethusa.oa').service('oaHandler', [
   function(uriGenerator, state, configurator, documentStore) {
     var self = this;
 
-    //this.getURI = function(){
-    //  return uriGenerator.generateURI();
-    //}
+    this.getURI = function(selectorClass, targetToken){
+      return uriGenerator.generateURI(selectorClass, targetToken);
+    }
 
     this.getCurrentDate = function() {
       var d = new Date();
-      return d.getFullYear() + "-" + d.getMonth()
+      var t = d.getFullYear() + "-" + (d.getMonth()+1)
           + "-" + d.getDate() + "T" + d.getHours() +
           ":" + d.getMinutes() + ":" + d.getSeconds();
+      return t;
     }
 
     this.generateTarget = function(ids) {

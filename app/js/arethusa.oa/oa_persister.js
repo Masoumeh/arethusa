@@ -10,8 +10,7 @@ angular.module('arethusa.oa').factory('oaPersister', [
           var self = this;
           res = configurator.provideResource(conf.resource);
 
-          this.createOA = function (token, refId, motiv, selectorClass, pre, suf) {
-              alert("persister " + pre + suf);
+          this.oa = function (refId, motiv, selector, tarToken, callback, errCallback) {
               var oa = {};
               oa["@context"] = "http://www.w3.org/ns/oa-context-20130208.json";
               oa["@id"] = "id";
@@ -24,10 +23,10 @@ angular.module('arethusa.oa').factory('oaPersister', [
               oa["hasTarget"] = {};
               oa["hasTarget"]["@id"] = "http";
               oa["hasTarget"]["@type"] = "oa:SpecificResource";
-              //oa["hasTarget"]["hasSelector"] = oaHandler.getURI();
+              oa["hasTarget"]["hasSelector"] = oaHandler.getURI(selector, tarToken);
               oa["hasTarget"]["hasSource"] = {};
               oa["hasTarget"]["hasSource"]["@id"] = "http";
-              oa["hasSelector"] = uriGenerator.generateURI(token, selectorClass, pre, suf);
+              //oa["hasSelector"] = uriGenerator.generateURI(selectorClass);
               oa["motivatedBy"] = motiv;
               oa["serializedBy"] = {};
               oa["serializedBy"]["@id"] = "http";
@@ -36,7 +35,7 @@ angular.module('arethusa.oa').factory('oaPersister', [
               return oa;
           };
 
-          this.save = function (oa,callback,errCallback) {
+          this.save = function (oa) {
               res.save(oa, self.mimeType).then(callback, errCallback);
           };
 

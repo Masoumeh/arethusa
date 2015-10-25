@@ -56,7 +56,7 @@
   "plugins" : {
     "oa" : {
       "retriever" : {
-        "OaRetriever" : {
+        "oaRetriever" : {
           "resource" : "arethusaServerOa"
         }
       },

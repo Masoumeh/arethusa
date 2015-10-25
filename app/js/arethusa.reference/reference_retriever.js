@@ -10,6 +10,7 @@ angular.module('arethusa.reference').factory('ReferenceRetriever', [
 
       this.saveData = function(ref,success,error) {
           //oaPersister.save('mamad');
+        alert("save data in ref");
         resource.save(ref).then(success,error);
       };
 

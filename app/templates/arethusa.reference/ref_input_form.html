@@ -1,41 +1,41 @@
 <form ng-if="active">
-  <!-- ngIf opens a new scope - we therefore need a -->
-  <!-- parent reference in our model -->
-  <!--<span class="italic">{{ currentTokenStrings }}</span>-->
+    <!-- ngIf opens a new scope - we therefore need a -->
+    <!-- parent reference in our model -->
+    <!--<span class="italic">{{ currentTokenStrings }}</span>-->
     <div ng-repeat='tok in splittedTokens'>
         <div>
-        <label class="bold">Text Quote Selector words in context:</label> <br/>
-        <label>Exact target: {{ tok }}</label><br/>
-        <label>Prefix: <div><input type="number" ng-model="$parent.ref.preNum" id="preNum" value="1" min="1" max="99">
-                        </div>
-        </label>
-        <br/>
-        <label>Suffix: <div><input type="number" ng-model="$parent.ref.sufNum" id="sufNum" value="1" min="1" max="99">
-                       </div>
-        </label>
-        <br/>
-        </div>
-       <label class="italic">References for {{ tok }}<label><br/><br/>
-        <div ng-repeat='ref in tokenRefs2'>
-            <div ng-if = "ref.tokenString == tok">
-                <input
-                type="radio"
-                class="postag-selector"
-                name="ref.id"
-                ng-model="$parent.ref.id"
-                ng-value="ref.id"
-                ng-ini="''">
-                </input>
-                <a href={{ref.placeLink}}>{{ref.name}}</a> "-" {{ref.id}}
-            <div>{{ref.dsp}}</div>
-            <div>{{ref.country}}</div>
+            <label class="bold">Text Quote Selector words in context:</label> <br/>
+            <label>Exact target: {{ tok }}</label><br/>
+            <label>Prefix: <div><input type="number" ng-model="$parent.ref.preNum" id="preNum" value="1" min="1" max="99">
             </div>
-                <br/><br/>
+            </label>
+            <br/>
+            <label>Suffix: <div><input type="number" ng-model="$parent.ref.sufNum" id="sufNum" value="1" min="1" max="99">
+            </div>
+            </label>
+            <br/>
         </div>
+        <label class="italic">References for {{ tok }}<label><br/>
+            <div ng-repeat='tref in tokenRefs2'>
+                <div ng-if = "tref.tokenString == tok">
+                    <input
+                            type="radio"
+                            class="postag-selector"
+                            name="tref.id"
+                            ng-model="$parent.selectedRef.id"
+                            ng-value="tref.id">
+                    <a href={{tref.placeLink}}>{{tref.name}}</a> - {{tref.id}}
+                    <div>{{tref.dsp}}</div>
+                    <div>{{tref.country}}</div>
+                    </input>
+                </div>
+                <br/>
+            </div>
         <span
-          ng-click="submit()"
-          class="button micro radius"
-          translate="submit selected">
+                ng-click="submit(tok)"
+                class="button micro radius"
+                translate="submit selected">
         </span>
+        <br/><br/>
     </div>
 </form>

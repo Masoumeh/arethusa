@@ -5,14 +5,14 @@ angular.module('arethusa.reference').service('reference', [
   'configurator',
   'navigator',
   'plugins',
-  'oa',
+  'oaPersister',
+  'oaRetriever',
   '$http',
-  function(state, configurator, navigator, plugins, oa, $http) {
+  function(state, configurator, navigator, plugins, oaPersister, oaRetriever,$http) {
       var self = this;
       this.name = 'reference';
       var retriever, persister;
-      //var refArr = [];
-      var tokenMapRef = new Map();
+      var refArr = [];
       var tokenRefMap = new Map();
       var id = 0;
       var allData;
@@ -44,56 +44,40 @@ angular.module('arethusa.reference').service('reference', [
       function selectedRef(id) {
           return state.getToken(id).ref;
       }
-
+      // To be used in fetching the references of a selected token which
+      // has been got
       this.mapRefToToken = function(refId, cToken) {
-        tokenRefMap[cToken] = refId;
+        tokenRefMap[cToken] = {};
+          tokenRefMap[cToken][id] = refId;
         return tokenRefMap;
       };
-
-      this.getRefToToken = function() {
+      this.getTokenRefMap = function() {
         return tokenRefMap;
       };
-
-      this.createNewRef = function (id, selectorClass, cToken, preNum, sufNum) {
-          var oaObject = {};
-          angular.forEach(state.selectedTokens, function (token) {
-              var oaObj = oa.createOA(id, "oa:identifying", selectorClass, preNum, sufNum);
-              oaObject.push(oaObj);
-          });
-          alert("oaObject length: " +oaObject.length);
-          persister.saveData(oaObject,saveSuccess,saveError);
-      };
-
-      this.tokensRef = function (tokens, id, selectorClass, cToken, preNum, sufNum) {
-          angular.forEach(tokens, function (id) {
-             this.createNewRef(id, selectorClass, cToken, preNum, sufNum);
-          });
-      }
-      this.splitRefs = function (map, key) {
-          return map[key].split('|').toString();
-      };
-
-      function getRefs() {
-
-          retriever.get(function (refs) {
-              for (var i = 0; i < refs.length; i++) {
-                  refArr.push(refs[i]);
-                  if (tokenMapRef.hasOwnProperty(refs[i].cToken)) {
-                      tokenMapRef[refs[i].cToken] = tokenMapRef[refs[i].cToken] + "|" + refs[i].link;
-                  }
-                  else {
-                      tokenMapRef[refs[i].cToken] = refs[i].link;
-                  }
-              }
-          });
-      };
-
       function saveSuccess() {
-          alert('success');
+
       };
 
       function saveError() {
-          alert('error');
+
+      };
+      this.createNewRef = function (id, selectorClass, cToken, ref) {
+          var oaPersist = new oaPersister(conf);
+          var oa = oaPersist.oa(id, "oa:identifying", selectorClass, cToken, saveSuccess, saveError);
+          refArr.push(oa);
+          persister.saveData(refArr, saveSuccess, saveError);
+          return refArr;
+      };
+
+      this.splitRefs = function (map, key) {
+          return map[key].split('|').toString();
+      };
+      function getRefs() {
+          retriever.get(function (refs) {
+              refArr=refs;
+              var oaRet = new oaRetriever(conf);
+              tokenRefMap = oaRet.parseOa(refs);
+          });
       };
 
       this.init = function () {
@@ -108,9 +92,7 @@ angular.module('arethusa.reference').service('reference', [
                   return console.log("AJAX Error: " + textStatus);
               },
               success: function (data) {
-                  alert("getAllData success");
                   allData = data;
-                  //alert("success " + search_for("Rome",data));
               }
           });
 
