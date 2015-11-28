@@ -17,7 +17,6 @@ angular.module('arethusa.reference').service('reference', [
       var id = 0;
       var allData;
       var conf;
-      //var refId;
 
       this.getAllData = function() {
           return allData;
@@ -54,6 +53,7 @@ angular.module('arethusa.reference').service('reference', [
       this.getTokenRefMap = function() {
         return tokenRefMap;
       };
+ 
       function saveSuccess() {
 
       };
