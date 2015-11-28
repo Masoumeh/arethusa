@@ -1,22 +1,23 @@
 <form ng-if="active">
-    <!-- ngIf opens a new scope - we therefore need a -->
-    <!-- parent reference in our model -->
-    <!--<span class="italic">{{ currentTokenStrings }}</span>-->
     <div ng-repeat='tok in splittedTokens'>
         <div>
-            <label class="bold">Text Quote Selector words in context:</label> <br/>
-            <label>Exact target: {{ tok }}</label><br/>
-            <label>Prefix: <div><input type="number" ng-model="$parent.ref.preNum" id="preNum" value="1" min="1" max="99">
-            </div>
-            </label>
-            <br/>
-            <label>Suffix: <div><input type="number" ng-model="$parent.ref.sufNum" id="sufNum" value="1" min="1" max="99">
-            </div>
-            </label>
-            <br/>
+          <label class="bold">Text Quote Selector words in context:</label> <br/>
+          <label>Exact target: {{ tok }}</label><br/>
+          <table style="background: none;margin: 0em;border: none;">
+              <tr><td>Prefix:</td>
+                <td>
+                <input type="number" ng-model="$parent.ref.preNum" id="preNum" value="1" min="1" max="99"/>
+                </td><td>Suffix:</td>
+                <td>
+                <input type="number" ng-model="$parent.ref.sufNum" id="sufNum" value="1" min="1" max="99"/>
+                </td>
+              </tr>
+          </table>
+          <br/>
         </div>
+
         <label class="italic">References for {{ tok }}<label><br/>
-            <div ng-repeat='tref in tokenRefs2'>
+            <div ng-repeat='tref in tokenRefs'>
                 <div ng-if = "tref.tokenString == tok">
                     <input
                             type="radio"
@@ -30,6 +31,18 @@
                     </input>
                 </div>
                 <br/>
+            </div>
+            <div>
+                <table style="background: none;margin: 0em;border: none;" class="small">
+                    <tr>
+                        <td><input type="text" ng-model="" id=""/></td>
+                        <td><input type="text" ng-model="" id=""/></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" ng-model="" id=""/></td>
+                        <td><input type="text" ng-model="" id=""/></td>
+                    </tr>
+                </table>
             </div>
         <span
                 ng-click="submit(tok)"
