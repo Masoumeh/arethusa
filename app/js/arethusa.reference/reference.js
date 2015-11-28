@@ -18,7 +18,7 @@ angular.module('arethusa.reference').service('reference', [
       var allData;
       var conf;
 
-      this.getAllData = function() {
+      this.getAllData = function () {
           return allData;
       };
 
@@ -43,17 +43,18 @@ angular.module('arethusa.reference').service('reference', [
       function selectedRef(id) {
           return state.getToken(id).ref;
       }
+
       // To be used in fetching the references of a selected token which
       // has been got
-      this.mapRefToToken = function(refId, cToken) {
-        tokenRefMap[cToken] = {};
+      this.mapRefToToken = function (refId, cToken) {
+          tokenRefMap[cToken] = {};
           tokenRefMap[cToken][id] = refId;
-        return tokenRefMap;
+          return tokenRefMap;
       };
-      this.getTokenRefMap = function() {
-        return tokenRefMap;
+      this.getTokenRefMap = function () {
+          return tokenRefMap;
       };
- 
+
       function saveSuccess() {
 
       };
@@ -72,9 +73,10 @@ angular.module('arethusa.reference').service('reference', [
       this.splitRefs = function (map, key) {
           return map[key].split('|').toString();
       };
+
       function getRefs() {
           retriever.get(function (refs) {
-              refArr=refs;
+              refArr = refs;
               var oaRet = new oaRetriever(conf);
               tokenRefMap = oaRet.parseOa(refs);
           });
@@ -84,19 +86,18 @@ angular.module('arethusa.reference').service('reference', [
           configure();
           getRefs();
           $.ajax("/pleiades-geojson/name_index.json",
-          {
-              type: 'GET',
-              dataType: 'json',
-              crossDomain: true,
-              error: function (jqXHR, textStatus, errorThrown) {
-                  return console.log("AJAX Error: " + textStatus);
-              },
-              success: function (data) {
-                  allData = data;
-              }
-          });
-
-    }
+              {
+                  type: 'GET',
+                  dataType: 'json',
+                  crossDomain: true,
+                  error: function (jqXHR, textStatus, errorThrown) {
+                      return console.log("AJAX Error: " + textStatus);
+                  },
+                  success: function (data) {
+                      allData = data;
+                  }
+              });
+      }
   }
 ]);
 

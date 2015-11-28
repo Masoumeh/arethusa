@@ -23,17 +23,8 @@ angular.module('arethusa.reference').directive('refInputForm', [
                 };
                 scope.allJsonData = reference.getAllData();
 
-	        scope.mapResultsToToken = function (_results, token) {
-                    for (var i = 0; i < _results.length; i++) {
-                        if (begins_with(_results[i][0].toString(), token)) {
-                            _results[i][2] = token;
-                        }
-                    }
-                    return _results;
-                };
-
                 scope.submit = function (thisToken) {
-                    var selRef = scope.tokenRefs2[scope.selectedRef.id];
+                    var selRef = scope.tokenRefs[scope.selectedRef.id];
                     //scope.selectedRefMap = reference.mapRefToToken(scope.ref.id, thisToken);
                     reference.createNewRef(selRef.placeLink,
                         scope.selectedRef.selector,
@@ -46,7 +37,7 @@ angular.module('arethusa.reference').directive('refInputForm', [
                     return reference.splitRefs(scope.tokenMapRef, token);
                 };
 
-                this.currentTokens = function() {
+                function currentTokens() {
                     return scope.active ? state.toTokenStrings(scope.ids) : '';
                 }
 
@@ -54,27 +45,24 @@ angular.module('arethusa.reference').directive('refInputForm', [
                     scope.ids = Object.keys(newVal).sort();
                     scope.active = scope.ids.length;
                     scope.currentTokenStrings = currentTokens();
+                    ref_finder.setCurTokens(currentTokens());
                     scope.splittedTokens = ref_finder.splitStr(scope.currentTokenStrings);
-
-                    if (currentTokens() == "")
-                        return;
+                    if (currentTokens() == "")return;
 
                     var tokenRefMap = reference.getTokenRefMap();
                     var _results = ref_finder.results();
                     angular.forEach(scope.splittedTokens, function (spToken) {
-                        scope.resultToTokenMap = scope.mapResultsToToken(_results, spToken);
+                        scope.resultToTokenMap = ref_finder.mapResultsToToken(_results, spToken);
                     });
-                    _results = _results.filter(function(ent) {
-                        return !(tokenRefMap[ent[2]]!=null &&
-                            tokenRefMap[ent[2]]!=ent[1]);
+                    _results = _results.filter(function (ent) {
+                        return !(tokenRefMap[ent[2]] != null &&
+                        tokenRefMap[ent[2]] != ent[1]);
                     });
-                    scope.tokenRefs = new Object();
-		    ref_finder.curToks=this.currentTokens();
-                    ref_finder.getTokenRef(_results, 0);
+                    ref_finder.callGetTokenRef(_results, 0);
+                    scope.tokenRefs=ref_finder.tokenRefs2;
                 });
             },
             templateUrl: 'templates/arethusa.reference/ref_input_form.html'
         };
     }
-
 ]);
