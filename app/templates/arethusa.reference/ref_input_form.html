@@ -22,7 +22,6 @@
                     <input
                             type="radio"
                             class="postag-selector"
-                            name="tref.id"
                             ng-model="$parent.selectedRef.id"
                             ng-value="tref.id">
                     <a href={{tref.placeLink}}>{{tref.name}}</a> - {{tref.id}}
@@ -33,16 +32,17 @@
                 <br/>
             </div>
             <div>
-                <table style="background: none;margin: 0em;border: none;" class="small">
-                    <tr>
-                        <td><input type="text" ng-model="" id=""/></td>
-                        <td><input type="text" ng-model="" id=""/></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" ng-model="" id=""/></td>
-                        <td><input type="text" ng-model="" id=""/></td>
-                    </tr>
-                </table>
+                <input
+                        type="radio"
+                        class="postag-selector"
+                        ng-model="$parent.selectedRef.id"
+                        value="0">  Custom Reference:
+                <div>Name:<input type="text" ng-model="custom.name" /></div>
+                <div>Reference: <input type="text" ng-model="custom.link" /></div>
+                <div>Description: <input type="text" ng-model="custom.description" id=""/></div>
+                <div>Current City:<input type="text" ng-model="custom.city" id=""/></div>
+                <div>Current Country:<input type="text" ng-model="custom.country" id=""/></div>
+                </input>
             </div>
         <span
                 ng-click="submit(tok)"

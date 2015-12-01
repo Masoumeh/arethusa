@@ -62,7 +62,7 @@ angular.module('arethusa.reference').service('reference', [
       function saveError() {
 
       };
-      this.createNewRef = function (id, selectorClass, cToken, ref) {
+      this.createNewRef = function (id, selectorClass, cToken, preNum,sufNum) {
           var oaPersist = new oaPersister(conf);
           var oa = oaPersist.oa(id, "oa:identifying", selectorClass, cToken, saveSuccess, saveError);
           refArr.push(oa);

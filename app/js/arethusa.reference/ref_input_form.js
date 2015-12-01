@@ -15,6 +15,14 @@ angular.module('arethusa.reference').directive('refInputForm', [
                 scope.resultToTokenMap = new Map();
                 scope.matchedTokens = [];
                 scope.state = state;
+                scope.custom = {
+                    name: '',
+                    link: '',
+                    city: '',
+                    country: '',
+                    description:'',
+                };
+
                 scope.selectedRef = {
                     id: 'none',
                     selector: 'oa:TextQuoteSelector',
@@ -24,8 +32,14 @@ angular.module('arethusa.reference').directive('refInputForm', [
                 scope.allJsonData = reference.getAllData();
 
                 scope.submit = function (thisToken) {
-                    var selRef = scope.tokenRefs[scope.selectedRef.id];
-                    //scope.selectedRefMap = reference.mapRefToToken(scope.ref.id, thisToken);
+                    if (scope.selectedRef.id == 0) {
+                        var selRef =  {};
+                        selRef.placeLink = scope.custom.link;
+
+                    } else {
+                        var selRef = scope.tokenRefs[scope.selectedRef.id];
+                    }
+                    scope.selectedRefMap = reference.mapRefToToken(scope.selectedRef.id, thisToken);
                     reference.createNewRef(selRef.placeLink,
                         scope.selectedRef.selector,
                         thisToken,
